@@ -1,4 +1,7 @@
 #include <sstream>
+#include <math.h>
+#include <map>
+#include <omp.h>
 
 #include <seqan3/std/filesystem>
 
@@ -9,8 +12,57 @@
 #include <seqan3/search/fm_index/fm_index.hpp>
 #include <seqan3/search/search.hpp>
 
+
+void shiftOr(const std::vector<seqan3::dna5> & text, const std::vector<seqan3::dna5> pattern)
+{
+    //Preprocessing
+    for(auto letter : pattern)
+    {
+        seqan3::debug_stream<<letter;
+    }
+    seqan3::debug_stream<<": "; 
+    std::map<seqan3::dna5, uint64_t> Bitmask{};
+    size_t m = pattern.size();
+    size_t count = 0;
+    uint64_t bits = pow(2,m)-1;
+    uint64_t mask = bits;
+    for(size_t i = 0; i < m; i++)
+    {
+        Bitmask[pattern[i]] = mask;
+    }
+    mask<<=1;
+    mask&=bits;
+    for(size_t i = 0; i < m; i++)
+    {
+        Bitmask[pattern[i]] = Bitmask[pattern[i]] & mask;
+        mask<<=1;
+        mask|=1;
+    }
+    uint64_t hit = bits >> 1;
+    //search
+    uint64_t D = bits;
+    for(size_t i = 0; i < text.size(); i++)
+    {
+        D <<= 1;
+        D &= bits;
+        if(Bitmask.count(text[i]) != 0)
+            D |= Bitmask[text[i]];
+        else
+            D |= bits;
+        if((D|hit) != bits)
+        {
+            count++;
+            seqan3::debug_stream<<i-m+1<<" ";
+        }
+    }
+    seqan3::debug_stream << "\n";
+}
+
+
 // prints out all occurences of query inside of ref
 void findOccurences(std::vector<seqan3::dna5> const& ref, std::vector<seqan3::dna5> const& query) {
+
+    shiftOr(ref,query);
     //!TODO ImplementMe
 }
 
