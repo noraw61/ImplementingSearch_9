@@ -7,11 +7,11 @@ For FU-Berlin students I recommend looking [ssh tutorial](https://github.com/seq
 
 ### Cloning (very cool)
 To checkout the code you can run:
-  + `git clone --recurse-submodules https://github.com/SGSSGene/ImplementingSearch`
+  + `git clone --recurse-submodules https://github.com/noraw61/ImplementingSearch_9`
   
 ### gitpod:
 Lets say you are not an fu-student and don't have access to an linux machine, you can also use gitpod, which provides an online ide:
-  + https://gitpod.io/#https://github.com/SGSSGene/ImplementingSearch
+  + https://gitpod.io/#https://github.com/noraw61/ImplementingSearch_9
 
 
 ## How to build the software
