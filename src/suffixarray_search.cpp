@@ -152,7 +152,7 @@ int main(int argc, char const* const* argv) {
     }
 
     //!TODO here adjust the number of searches
-    queries.resize(100); // will reduce the amount of searches
+    queries.resize(1000000); // will reduce the amount of searches
 
     // Array that should hold the future suffix array
     std::vector<saint_t> suffixarray;
