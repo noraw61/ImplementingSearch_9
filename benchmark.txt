@@ -122,7 +122,10 @@ Abgabe 2:
             Maximum resident set size (kbytes): 77488
      
         1000000 queries:
+            does not terminate? at least not after 4 minutes?
 
 
 
-    4. Which algorithm is best suited?
+    4. Which algorithm is best suited?  
+        expected: FM index with memory consumption but suffix array with time because of the binary search
+        measured: FM index with memory and time
