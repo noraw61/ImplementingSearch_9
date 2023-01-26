@@ -55,11 +55,13 @@ int main(int argc, char const* const* argv) {
 
 
     //!TODO !ImplementMe use the seqan3::search function to search
-    auto res = seqan3::search(queries, index);
-    seqan3::debug_stream << res << '\n';
+    //using namespace seqan3::literals;
+    seqan3::configuration const config = seqan3::search_cfg::on_result{[](auto && result)
+                                                                       {
+                                                                           seqan3::debug_stream << result << '\n';
+                                                                       }};
 
-    auto res = seqan3::search(queries, index);
-    seqan3::debug_stream << res << '\n';
+    seqan3::search(queries, index, config);
 
     return 0;
 }
