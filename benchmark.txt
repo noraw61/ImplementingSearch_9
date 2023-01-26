@@ -1,0 +1,338 @@
+Abgabe 1:
+    4. benchmark (runtime and memory) your solutions for 1’000, 10’000, 100’000 1’000’000
+    queries of length 100. 
+    We chose length 40 instead, because our naive algorihm gets no results with the other lengths.
+
+    length 40: illimina__reads_40.fasta.gz
+    server compute11:
+    aus build ordner: (jedes mal Anzahl queries anpassen)
+    
+    1000 queries naive search:
+        Command being timed: "./bin/naive_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 2962.17
+        System time (seconds): 0.66
+        Percent of CPU this job got: 99%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 49:24.89
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 214056
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 13913
+        Voluntary context switches: 14
+        Involuntary context switches: 247307
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+  
+
+    1000 queries suffix array:
+        User time (seconds): 35.86
+        System time (seconds): 1.20
+        Percent of CPU this job got: 99%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:37.20
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 604120
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 10060
+        Voluntary context switches: 20
+        Involuntary context switches: 3128
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+
+    10000 queries naive search:
+        Command being timed: "./bin/naive_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 46966.00
+        System time (seconds): 6.66
+        Percent of CPU this job got: 99%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 13:03:29
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 213668
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 8
+        Minor (reclaiming a frame) page faults: 436206
+        Voluntary context switches: 22
+        Involuntary context switches: 3306407
+        Swaps: 0
+        File system inputs: 1024
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+
+
+    10000 queries suffix array: 
+        Command being timed: "./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 35.95
+        System time (seconds): 2.17
+        Percent of CPU this job got: 99%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:38.24
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 605308
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 9560
+        Voluntary context switches: 14
+        Involuntary context switches: 4274
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+
+    100000 queries naive search:
+
+
+
+    100000 queries suffix array:
+        Command being timed: "./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 34.16
+        System time (seconds): 12.00
+        Percent of CPU this job got: 99%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:46.29
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 603792
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 7
+        Minor (reclaiming a frame) page faults: 13048
+        Voluntary context switches: 22
+        Involuntary context switches: 3461
+        Swaps: 0
+        File system inputs: 1016
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+
+    1000000 queries naive search:
+
+
+
+    1000000 queries suffix array:
+        Command being timed: "./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 38.32
+        System time (seconds): 13.55
+        Percent of CPU this job got: 99%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:52.13
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 627388
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 16577
+        Voluntary context switches: 17
+        Involuntary context switches: 28475
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 0
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+
+
+
+    5. Benchmark (runtime) queries of the length 40, 60, 80, and 100 with a suitable number
+    of queries. Number of queries chosen: 1000
+
+    for naive search runtime is not meaningful because the algorithm doesnt find occurences with a text length larger than 40
+
+        length 40:
+            naive:
+
+
+            suffix:
+                 User time (seconds): 35.86
+                System time (seconds): 1.20
+                Percent of CPU this job got: 99%
+                Elapsed (wall clock) time (h:mm:ss or m:ss): 0:37.20
+                Average shared text size (kbytes): 0
+                Average unshared data size (kbytes): 0
+                Average stack size (kbytes): 0
+                Average total size (kbytes): 0
+                Maximum resident set size (kbytes): 604120
+                Average resident set size (kbytes): 0
+                Major (requiring I/O) page faults: 0
+                Minor (reclaiming a frame) page faults: 10060
+                Voluntary context switches: 20
+                Involuntary context switches: 3128
+                Swaps: 0
+                File system inputs: 0
+                File system outputs: 0
+                Socket messages sent: 0
+                Socket messages received: 0
+                Signals delivered: 0
+                Page size (bytes): 4096
+                Exit status: 0
+
+        length 60:
+            naive:
+                printet ganz viele indizes und wird nicht fertig
+            suffix:
+                	Command being timed: "./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_60.fasta.gz"
+                    User time (seconds): 31.11
+                    System time (seconds): 1.07
+                    Percent of CPU this job got: 99%
+                    Elapsed (wall clock) time (h:mm:ss or m:ss): 0:32.28
+                    Average shared text size (kbytes): 0
+                    Average unshared data size (kbytes): 0
+                    Average stack size (kbytes): 0
+                    Average total size (kbytes): 0
+                    Maximum resident set size (kbytes): 605824
+                    Average resident set size (kbytes): 0
+                    Major (requiring I/O) page faults: 0
+                    Minor (reclaiming a frame) page faults: 10918
+                    Voluntary context switches: 22
+                    Involuntary context switches: 2694
+                    Swaps: 0
+                    File system inputs: 0
+                    File system outputs: 0
+                    Socket messages sent: 0
+                    Socket messages received: 0
+                    Signals delivered: 0
+                    Page size (bytes): 4096
+                    Exit status: 0
+
+        length 80:
+            naive:
+                Command being timed: "./bin/naive_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_80.fasta.gz"
+                User time (seconds): 195.48
+                System time (seconds): 0.99
+                Percent of CPU this job got: 99%
+                Elapsed (wall clock) time (h:mm:ss or m:ss): 3:16.97
+                Average shared text size (kbytes): 0
+                Average unshared data size (kbytes): 0
+                Average stack size (kbytes): 0
+                Average total size (kbytes): 0
+                Maximum resident set size (kbytes): 217908
+                Average resident set size (kbytes): 0
+                Major (requiring I/O) page faults: 0
+                Minor (reclaiming a frame) page faults: 24246
+                Voluntary context switches: 18
+                Involuntary context switches: 20469
+                Swaps: 0
+                File system inputs: 0
+                File system outputs: 0
+                Socket messages sent: 0
+                Socket messages received: 0
+                Signals delivered: 0
+                Page size (bytes): 4096
+                Exit status: 0
+
+            suffix:
+                Command being timed: "./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_80.fasta.gz"
+                User time (seconds): 35.96
+                System time (seconds): 0.97
+                Percent of CPU this job got: 99%
+                Elapsed (wall clock) time (h:mm:ss or m:ss): 0:37.05
+                Average shared text size (kbytes): 0
+                Average unshared data size (kbytes): 0
+                Average stack size (kbytes): 0
+                Average total size (kbytes): 0
+                Maximum resident set size (kbytes): 608600
+                Average resident set size (kbytes): 0
+                Major (requiring I/O) page faults: 0
+                Minor (reclaiming a frame) page faults: 10505
+                Voluntary context switches: 22
+                Involuntary context switches: 3071
+                Swaps: 0
+                File system inputs: 0
+                File system outputs: 0
+                Socket messages sent: 0
+                Socket messages received: 0
+                Signals delivered: 0
+                Page size (bytes): 4096
+                Exit status: 0
+
+        length 100: 
+            naive:
+                Command being timed: "./bin/naive_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_100.fasta.gz"
+                User time (seconds): 194.71
+                System time (seconds): 0.88
+                Percent of CPU this job got: 99%
+                Elapsed (wall clock) time (h:mm:ss or m:ss): 3:15.84
+                Average shared text size (kbytes): 0
+                Average unshared data size (kbytes): 0
+                Average stack size (kbytes): 0
+                Average total size (kbytes): 0
+                Maximum resident set size (kbytes): 220096
+                Average resident set size (kbytes): 0
+                Major (requiring I/O) page faults: 0
+                Minor (reclaiming a frame) page faults: 12658
+                Voluntary context switches: 19
+                Involuntary context switches: 18330
+                Swaps: 0
+                File system inputs: 0
+                File system outputs: 0
+                Socket messages sent: 0
+                Socket messages received: 0
+                Signals delivered: 0
+                Page size (bytes): 4096
+                Exit status: 0
+
+            suffix:
+                Command being timed: "./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_100.fasta.gz"
+                User time (seconds): 36.02
+                System time (seconds): 1.07
+                Percent of CPU this job got: 99%
+                Elapsed (wall clock) time (h:mm:ss or m:ss): 0:37.24
+                Average shared text size (kbytes): 0
+                Average unshared data size (kbytes): 0
+                Average stack size (kbytes): 0
+                Average total size (kbytes): 0
+                Maximum resident set size (kbytes): 610764
+                Average resident set size (kbytes): 0
+                Major (requiring I/O) page faults: 0
+                Minor (reclaiming a frame) page faults: 11059
+                Voluntary context switches: 23
+                Involuntary context switches: 2593
+                Swaps: 0
+                File system inputs: 0
+                File system outputs: 0
+                Socket messages sent: 0
+                Socket messages received: 0
+                Signals delivered: 0
+                Page size (bytes): 4096
+                Exit status: 0
