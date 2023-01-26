@@ -102,6 +102,12 @@ Abgabe 2:
     queries of length 100. we chose length 40 as before, to make comparisons
 
         1000 queries:
+                Command being timed: "./bin/fmindex_search --index myIndex.index --query ../data/illumina_reads_40.fasta.gz"
+            User time (seconds): 0.19
+            System time (seconds): 0.24
+            Maximum resident set size (kbytes): 76912
+         
+
         10000 queries:
         100000 queries:
         1000000 queries:
