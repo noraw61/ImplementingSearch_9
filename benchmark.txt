@@ -335,4 +335,8 @@ Abgabe 1:
                 Socket messages received: 0
                 Signals delivered: 0
                 Page size (bytes): 4096
+<<<<<<< HEAD
                 Exit status: 0
+=======
+                Exit status: 0
+>>>>>>> 8b985f7c3bc70bdea1f325d6d45df587898cd924
