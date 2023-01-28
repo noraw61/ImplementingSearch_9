@@ -1,0 +1,109 @@
+Aufgabe2.6
+
+finde out wich number of queries is best
+1000
+k=0
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_80.fasta.gz
+real    0m8,749s
+user    0m0,299s
+sys     0m8,174s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_60.fasta.gz
+real    0m5,451s
+user    0m0,287s
+sys     0m4,953s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_40.fasta.gz
+real    0m6,096s
+user    0m0,299s
+sys     0m5,690s
+
+10000
+k=0
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_40.fasta.gz
+real    0m29,289s
+user    0m3,377s
+sys     0m25,390s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_60.fasta.gz
+real    0m12,454s
+user    0m0,942s
+sys     0m10,750s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_80.fasta.gz
+real    0m10,621s
+user    0m0,817s
+sys     0m9,629s
+
+100000
+k=0
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_100.fasta.gz
+real    0m18,661s
+user    0m5,093s
+sys     0m13,376s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_80.fasta.gz
+real    0m22,650s
+user    0m5,428s
+sys     0m17,008s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_60.fasta.gz
+real    0m44,783s
+user    0m8,217s
+sys     0m36,184s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_40.fasta.gz
+real    3m16,412s
+user    0m34,354s
+sys     2m37,326s
+
+-> decide to go with 100000 queries
+
+100000
+k=1
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_100.fasta.gz
+real    0m19,880s
+user    0m5,222s
+sys     0m14,470s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_80.fasta.gz
+real    0m21,871s
+user    0m5,414s
+sys     0m16,272s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_60.fasta.gz
+real    0m43,806s
+user    0m7,626s
+sys     0m34,806s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_40.fasta.gz
+real    3m43,934s
+user    0m36,655s
+sys     3m5,449s
+
+100000
+k=2
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_40.fasta.gz
+real    3m50,270s
+user    0m36,819s
+sys     3m11,331s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_60.fasta.gz
+real    0m46,176s
+user    0m8,393s
+sys     0m37,186s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_80.fasta.gz
+real    0m20,920s
+user    0m5,943s
+sys     0m14,776s
+
+time ./bin/fmindex_search --index genomeIndex.index --query ../data/illumina_reads_100.fasta.gz
+real    0m20,285s
+user    0m5,145s
+sys     0m14,856s
