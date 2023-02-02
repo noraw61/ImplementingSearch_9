@@ -62,7 +62,7 @@ int main(int argc, char const* const* argv) {
     //          for (pos in search(index, part[p]):
     //              if (verify(ref, query, pos +- ....something)):
     //                  std::cout << "found something\n"
-    for(auto& query : queries){
+    /*for(auto& query : queries){
       for(unsigned i=0; i<k+1;++i){ //k+1 pieces
         unsigned subq_len = std::floor(query.size()/(k+1)); //length of subqueries berechnen
         std::vector<seqan3::dna5> subq = query[i*subq_len, (i+1)*subq_len]; //alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
@@ -70,11 +70,12 @@ int main(int argc, char const* const* argv) {
         seqan3::search_result res_search = seqan3::search(index, subq, cfg);
         for(auto& pos : res_search){
             seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
-            //start_pos=pos.seqan3::search_result::reference_begin_position()
-           res_complete = seqan3::search(index[start_pos, startpos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance und greift noch nicht auf die richtigen stelen im text zu, weil je nachdem wo die subq in der query ist es angepasst werden muss
+            std::integral start_pos_sub = pos.seqan3::search_result::reference_begin_position();
+            std::integral start_pos = start_pos_sub-i*subq_len;
+            seqan3::search_result res_complete = seqan3::search(index[start_pos, start_pos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance
         } 
       }
     }
-
+    */
     return 0;
 }
