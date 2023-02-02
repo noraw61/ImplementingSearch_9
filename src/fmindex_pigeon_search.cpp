@@ -52,7 +52,7 @@ int main(int argc, char const* const* argv) {
     unsigned k = 2;
 
     //!TODO here adjust the number of searches
-    queries.resize(5); // will reduce the amount of searches
+    queries.resize(3); // will reduce the amount of searches
 
 
     //!TODO !ImplementMe use the seqan3::search to find a partial error free hit, verify the rest inside the text
@@ -68,20 +68,19 @@ int main(int argc, char const* const* argv) {
         unsigned subq_len = std::floor(query.size()/(k+1)); //length of subqueries berechnen
         seqan3::debug_stream <<"length of subqueries: "<<subq_len << std::endl;
         for(unsigned i=0; i<k+1;++i){ //k+1 pieces
-            //std::vector<std::vector<seqan3::dna5>> subq{};
-            //subq.push_back(seqan3::views::slice(query,i*subq_len, (i+1)*subq_len)); //alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
-            auto subq = seqan3::views::slice(query,i*subq_len, (i+1)*subq_len);
+            auto subq = seqan3::views::slice(query,i*subq_len, (i+1)*subq_len);//alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
             seqan3::debug_stream <<"Subquery "<<i<<" :"<<subq<<std::endl;
-            //seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}};
-            //seqan3::search(subq,index, cfg);
-            //seqan3::search_result res_search = seqan3::search(index, subq, cfg);
-        //for(auto& pos : res_search){
-          //  seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
-            //std::integral start_pos_sub = pos.seqan3::search_result::reference_begin_position();
+            seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}}; 
+            auto res_search = seqan3::search(subq,index, cfg);
+            for (auto && result : res_search)
+                seqan3::debug_stream << result << '\n';
+            for(auto& pos : res_search){
+                //auto start_pos_sub = pos.seqan3::search_result::reference_begin_position();
             //std::integral start_pos = start_pos_sub-i*subq_len;
+            seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
             //seqan3::search_result res_complete = seqan3::search(index[start_pos, start_pos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance
-        } 
-      //}
+            } 
+        }
     }
     
     return 0;
