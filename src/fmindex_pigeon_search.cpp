@@ -68,9 +68,12 @@ int main(int argc, char const* const* argv) {
         unsigned subq_len = std::floor(query.size()/(k+1)); //length of subqueries berechnen
         seqan3::debug_stream <<"length of subqueries: "<<subq_len << std::endl;
         for(unsigned i=0; i<k+1;++i){ //k+1 pieces
-            seqan3::debug_stream <<"Subquery "<<i<<" :"<<seqan3::views::slice(query,i*subq_len, (i+1)*subq_len)<<std::endl;
-            std::vector<seqan3::dna5> subq = slice(query,i*subq_len, (i+1)*subq_len); //alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
-            seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}};
+            //std::vector<std::vector<seqan3::dna5>> subq{};
+            //subq.push_back(seqan3::views::slice(query,i*subq_len, (i+1)*subq_len)); //alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
+            auto subq = seqan3::views::slice(query,i*subq_len, (i+1)*subq_len);
+            seqan3::debug_stream <<"Subquery "<<i<<" :"<<subq<<std::endl;
+            //seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}};
+            //seqan3::search(subq,index, cfg);
             //seqan3::search_result res_search = seqan3::search(index, subq, cfg);
         //for(auto& pos : res_search){
           //  seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
