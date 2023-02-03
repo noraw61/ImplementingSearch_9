@@ -75,8 +75,8 @@ int main(int argc, char const* const* argv) {
             for (auto && result : res_search)
                 seqan3::debug_stream << result << '\n';
             for(auto& pos : res_search){
-                //auto start_pos_sub = pos.seqan3::search_result::reference_begin_position();
-            //std::integral start_pos = start_pos_sub-i*subq_len;
+                auto start_pos_sub = pos.reference_id(); 
+               // auto start_pos = start_pos_sub-i*subq_len;
             seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
             //seqan3::search_result res_complete = seqan3::search(index[start_pos, start_pos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance
             } 
