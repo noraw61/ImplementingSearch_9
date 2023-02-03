@@ -31,6 +31,13 @@ int main(int argc, char const* const* argv) {
 
     // loading our files
     auto query_stream     = seqan3::sequence_file_input{query_file};
+    auto reference_stream = seqan3::sequence_file_input{index_path};
+    
+    //reference
+    std::vector<std::vector<seqan3::dna5>> reference;
+    for (auto& record : reference_stream) {
+	    reference.push_back(record.sequence());
+    }
 
     // read query into memory
     std::vector<std::vector<seqan3::dna5>> queries;
@@ -53,15 +60,6 @@ int main(int argc, char const* const* argv) {
 
     //!TODO here adjust the number of searches
     queries.resize(2); // will reduce the amount of searches
-
-    //text für verification nochmal einlesen
-    auto reference_stream = seqan3::sequence_file_input{index_path};
-    std::vector<std::vector<seqan3::dna5>> reference;
-    for(auto& record : reference_stream){
-        reference.push_back(record.sequence());
-    }
-    
-
 
 
 
