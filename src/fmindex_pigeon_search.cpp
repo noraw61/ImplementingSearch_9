@@ -72,13 +72,14 @@ int main(int argc, char const* const* argv) {
             seqan3::debug_stream <<"Subquery "<<i<<" :"<<subq<<std::endl;
             seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}}; 
             auto res_search = seqan3::search(subq,index, cfg);
-            for (auto && result : res_search)
+            for(auto && result : res_search){
                 seqan3::debug_stream << result << '\n';
-            for(auto& pos : res_search){
-                auto start_pos_sub = pos.reference_id(); 
-               // auto start_pos = start_pos_sub-i*subq_len;
-            seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
-            //seqan3::search_result res_complete = seqan3::search(index[start_pos, start_pos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance
+                auto start_pos_sub = result.reference_begin_position(); 
+                seqan3::debug_stream << "start pos subquery:"<<start_pos_sub << '\n';
+                auto start_pos = start_pos_sub-i*subq_len;
+                seqan3::debug_stream << "start pos query:"<<start_pos << '\n';
+                seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
+                //auto res_complete = seqan3::search(index[start_pos, start_pos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance
             } 
         }
     }
