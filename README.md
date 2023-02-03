@@ -19,7 +19,7 @@ Lets say you are not an fu-student and don't have access to an linux machine, yo
 $ # We are assuming you are in the terminal/console inside the repository folder
 $ mkdir build # creates a folder for our build system
 $ cd build
-$ cmake ..    # configures our build system
+$ cmake .. "-DCMAKE_CXX_FLAGS=-Wl,-rpath -Wl,/import/GCC/12.2.1/lib64" -DCMAKE_CXX_COMPILER=/import/GCC/12.2.1/bin/g++ # New awesome cmake
 $ make        # builds our software, repeat this command to recompile your software
 $ ./bin/naive_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz       # calls the code in src/naive_search.cpp
 $ ./bin/suffixarray_search --reference ../data/hg38_partial.fasta.gz --query ../data/illumina_reads_40.fasta.gz # calls the code in src/suffixarray_search.cpp
