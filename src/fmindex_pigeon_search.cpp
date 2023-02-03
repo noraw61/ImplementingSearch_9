@@ -52,7 +52,17 @@ int main(int argc, char const* const* argv) {
     unsigned k = 2;
 
     //!TODO here adjust the number of searches
-    queries.resize(3); // will reduce the amount of searches
+    queries.resize(2); // will reduce the amount of searches
+
+    //text für verification nochmal einlesen
+    auto reference_stream = seqan3::sequence_file_input{index_path};
+    std::vector<std::vector<seqan3::dna5>> reference;
+    for(auto& record : reference_stream){
+        reference.push_back(record.sequence());
+    }
+    
+
+
 
 
     //!TODO !ImplementMe use the seqan3::search to find a partial error free hit, verify the rest inside the text
@@ -69,17 +79,20 @@ int main(int argc, char const* const* argv) {
         seqan3::debug_stream <<"length of subqueries: "<<subq_len << std::endl;
         for(unsigned i=0; i<k+1;++i){ //k+1 pieces
             auto subq = seqan3::views::slice(query,i*subq_len, (i+1)*subq_len);//alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
-            seqan3::debug_stream <<"Subquery "<<i<<" :"<<subq<<std::endl;
+            seqan3::debug_stream <<"\t Subquery "<<i<<" :"<<subq<<std::endl;
             seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}}; 
             auto res_search = seqan3::search(subq,index, cfg);
             for(auto && result : res_search){
-                seqan3::debug_stream << result << '\n';
+                seqan3::debug_stream <<"\t\t"<< result << '\n';
                 auto start_pos_sub = result.reference_begin_position(); 
-                seqan3::debug_stream << "start pos subquery:"<<start_pos_sub << '\n';
+                seqan3::debug_stream << "\t\t start pos subquery:"<<start_pos_sub << '\n';
                 auto start_pos = start_pos_sub-i*subq_len;
-                seqan3::debug_stream << "start pos query:"<<start_pos << '\n';
-                seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{k}};
-                //auto res_complete = seqan3::search(index[start_pos, start_pos+query.size()], query, cfg); //das wäre jetzt aber ohne edit distance
+                seqan3::debug_stream << "\t\t start pos query:"<<start_pos << '\n';
+                //verifizieren (hamming distance)
+                seqan3::debug_stream << "\t\t subtext:" << '\n';
+                for(int j = start_pos;j<start_pos+query.size(); ++j){
+                    seqan3::debug_stream <<reference[j];
+                }
             } 
         }
     }
