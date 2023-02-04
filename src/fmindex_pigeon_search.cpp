@@ -21,6 +21,9 @@ int main(int argc, char const* const* argv) {
     auto index_path = std::filesystem::path{};
     parser.add_option(index_path, '\0', "index", "path to the query file");
 
+    auto reference_file = std::filesystem::path{};
+    parser.add_option(reference_file, '\0', "reference", "path to the reference file");
+
     auto query_file = std::filesystem::path{};
     parser.add_option(query_file, '\0', "query", "path to the query file");
 
@@ -33,7 +36,7 @@ int main(int argc, char const* const* argv) {
 
     // loading our files
     auto query_stream     = seqan3::sequence_file_input{query_file};
-    auto reference_stream = seqan3::sequence_file_input{index_path};
+    auto reference_stream = seqan3::sequence_file_input{reference_file};
     
     //reference
     std::vector<std::vector<seqan3::dna5>> reference;
