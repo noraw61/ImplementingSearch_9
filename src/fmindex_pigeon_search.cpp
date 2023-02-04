@@ -64,38 +64,42 @@ int main(int argc, char const* const* argv) {
     unsigned k = 2;
 
     //!TODO here adjust the number of searches
-    queries.resize(2); // will reduce the amount of searches
+    queries.resize(10); // will reduce the amount of searches
 
 
-
-    //!TODO !ImplementMe use the seqan3::search to find a partial error free hit, verify the rest inside the text
-    // Pseudo code (might be wrong):
-    // for query in queries:
-    //      parts[3] = cut_query(3, query);
-    //      for p in {0, 1, 2}:
-    //          for (pos in search(index, part[p]):
-    //              if (verify(ref, query, pos +- ....something)):
-    //                  std::cout << "found something\n"
     for(auto& query : queries){
-        seqan3::debug_stream << "query: "<<query<<std::endl;
+        //seqan3::debug_stream << "query: "<<query<<", length:"<< query.size()<<std::endl;
         unsigned subq_len = std::floor(query.size()/(k+1)); //length of subqueries berechnen
-        seqan3::debug_stream <<"length of subqueries: "<<subq_len << std::endl;
+        //seqan3::debug_stream <<"length of subqueries: "<<subq_len << std::endl;
         for(unsigned i=0; i<k+1;++i){ //k+1 pieces
             auto subq = seqan3::views::slice(query,i*subq_len, (i+1)*subq_len);//alle teile gleich lang und evtl die letzten buchstaben nicht im letzten subquery sind
-            seqan3::debug_stream <<"\t Subquery "<<i<<" :"<<subq<<std::endl;
+            //seqan3::debug_stream <<"\t\t Subquery "<<i<<" :"<<subq<<", length: "<<subq.size()<<std::endl;
             seqan3::configuration const cfg = seqan3::search_cfg::max_error_total{seqan3::search_cfg::error_count{0}}; 
             auto res_search = seqan3::search(subq,index, cfg);
             for(auto && result : res_search){
-                seqan3::debug_stream <<"\t\t"<< result << '\n';
+                //seqan3::debug_stream <<"\t\t"<< result << '\n';
                 auto start_pos_sub = result.reference_begin_position(); 
-                seqan3::debug_stream << "\t\t start pos subquery:"<<start_pos_sub << '\n';
+                //seqan3::debug_stream << "\t\t start pos subquery:"<<start_pos_sub << '\n';
                 auto start_pos = start_pos_sub-i*subq_len;
-                seqan3::debug_stream << "\t\t start pos query:"<<start_pos << '\n';
+                //seqan3::debug_stream << "\t\t start pos query:"<<start_pos << '\n';
                 //verifizieren (hamming distance)
-                seqan3::debug_stream << "\t\t subtext:" << '\n';
+                //seqan3::debug_stream << "\t\t\t Found subquery with FM-Index and 0 errors in this subtext:";
+                unsigned counter = 0;
+                std::vector<seqan3::dna5> subtext{};
                 for(int j = start_pos;j<start_pos+query.size(); ++j){
-                    seqan3::debug_stream <<reference[j];
+                    //seqan3::debug_stream <<reference[0][j];
+                    subtext.push_back(reference[0][j]);
+                    if(reference[0][j] != query[j-start_pos]){ //compare nucleotides
+                        counter+=1; //count errors
+                    }
                 }
+                //seqan3::debug_stream <<'\n';
+                if(counter <= k){
+                    seqan3::debug_stream <<"\tfound whole query: "<<query<<" in reference at position: "<<start_pos<<": "<<subtext<<" with "<<counter<<" errors."<<std::endl;
+                }
+                //else{
+                //    seqan3::debug_stream <<"\t\t\t\tbut not found whole query because of "<<counter<<" errors."<<std::endl;
+                //}
             } 
         }
     }
