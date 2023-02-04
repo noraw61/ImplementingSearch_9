@@ -10,6 +10,8 @@
 #include <cmath>
 #include <vector>
 
+
+
 int main(int argc, char const* const* argv) {
     seqan3::argument_parser parser{"fmindex_pigeon_search", argc, argv, seqan3::update_notifications::off};
 
