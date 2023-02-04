@@ -1,0 +1,66 @@
+k=2
+query=1000
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_40.fasta.gz
+
+User time (seconds): 217.05
+System time (seconds): 39.54
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_60.fasta.gz
+
+User time (seconds): 68.35
+System time (seconds): 15.14
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_80.fasta.gz
+
+User time (seconds): 48.65
+System time (seconds): 14.32
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_100.fasta.gz
+
+User time (seconds): 43.09
+System time (seconds): 13.27
+
+k=1
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_40.fasta.gz
+
+User time (seconds): 55.91
+System time (seconds): 14.43
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_60.fasta.gz
+
+User time (seconds): 42.08
+System time (seconds): 10.98
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_80.fasta.gz
+
+User time (seconds): 41.14
+System time (seconds): 12.33
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_100.fasta.gz
+
+User time (seconds): 40.32
+System time (seconds): 9.90
+
+k=0
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_40.fasta.gz
+
+User time (seconds): 39.87
+System time (seconds): 9.62
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_60.fasta.gz
+
+User time (seconds): 40.10
+System time (seconds): 8.82
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_80.fasta.gz
+
+User time (seconds): 40.04
+System time (seconds): 9.06
+
+/usr/bin/time -v ./bin/fmindex_pigeon_search --index genomIndex.index --reference ../data/ncbi-genomes-2023-01-27/GCF_000001405.26_GRCh38_genomic.fna.gz --query ../data/illumina_reads_100.fasta.gz
+
+User time (seconds): 39.90
+System time (seconds): 8.95
