@@ -1,0 +1,56 @@
+1000
+k=0
+
+Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 0.36
+        System time (seconds): 5.60
+
+ Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_60.fasta.gz"
+        User time (seconds): 0.28
+        System time (seconds): 5.23
+
+Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_80.fasta.gz"
+        User time (seconds): 0.28
+        System time (seconds): 5.45
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_100.fasta.gz"
+        User time (seconds): 0.32
+        System time (seconds): 5.37
+
+k=1
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 0.33
+        System time (seconds): 5.82
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_60.fasta.gz"
+        User time (seconds): 0.29
+        System time (seconds): 5.38
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_80.fasta.gz"
+        User time (seconds): 0.31
+        System time (seconds): 5.44
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_100.fasta.gz"
+        User time (seconds): 0.29
+        System time (seconds): 5.05
+
+
+
+k=2
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_40.fasta.gz"
+        User time (seconds): 0.38
+        System time (seconds): 10.00
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_60.fasta.gz"
+        User time (seconds): 0.30
+        System time (seconds): 5.66
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_80.fasta.gz"
+        User time (seconds): 0.29
+        System time (seconds): 5.55
+
+        Command being timed: "./bin/fmindex_search --index genomIndex.index --query ../data/illumina_reads_100.fasta.gz"
+        User time (seconds): 0.31
+        System time (seconds): 5.04
