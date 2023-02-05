@@ -85,21 +85,23 @@ int main(int argc, char const* const* argv) {
                 //verifizieren (hamming distance)
                 //seqan3::debug_stream << "\t\t\t Found subquery with FM-Index and 0 errors in this subtext:";
                 unsigned counter = 0;
-                std::vector<seqan3::dna5> subtext{};
+                //std::vector<seqan3::dna5> subtext{};
                 for(int j = start_pos;j<start_pos+query.size(); ++j){
                     //seqan3::debug_stream <<reference[0][j];
-                    subtext.push_back(reference[0][j]);
+                    //subtext.push_back(reference[0][j]);
                     if(reference[0][j] != query[j-start_pos]){ //compare nucleotides
                         counter+=1; //count errors
+                        if(counter>k){
+                            //    seqan3::debug_stream <<"\t\t\t\tbut not found whole query because of to many errors."<<std::endl;
+                            break;
+                        }
                     }
                 }
                 //seqan3::debug_stream <<'\n';
                 if(counter <= k){
-                    seqan3::debug_stream <<"\tfound whole query: "<<query<<" in reference at position: "<<start_pos<<": "<<subtext<<" with "<<counter<<" errors."<<std::endl;
+                    seqan3::debug_stream <<"\tfound whole query: "<<query<<" in reference at position: "<<start_pos<<" with "<<counter<<" errors."<<std::endl;
                 }
-                //else{
-                //    seqan3::debug_stream <<"\t\t\t\tbut not found whole query because of "<<counter<<" errors."<<std::endl;
-                //}
+        
             } 
         }
     }
